@@ -13,5 +13,5 @@ Primers used: (V3/V4)
 conda activate qiime2-amplicon-2023.9
 ```
 
-https://github.com/lili-bio/cov-genome-evo
+[Lili](https://github.com/lili-bio/cov-genome-evo)
 
