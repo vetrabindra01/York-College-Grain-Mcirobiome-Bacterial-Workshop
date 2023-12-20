@@ -16,9 +16,10 @@ Primers used: (V3/V4)
 # commands
 The mcirobiome analysis was performed using [QIIME 2 command-line interface](https://docs.qiime2.org/2023.9/interfaces/q2cli/).
 
+Activate qiime2 using conda.
 ```
 conda activate qiime2-amplicon-2023.9
 ```
 
-[Lili](https://github.com/lili-bio/cov-genome-evo)
+
 
