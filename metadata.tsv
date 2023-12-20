@@ -1,0 +1,7 @@
+sample-id	input	filtered	percentage of input passed filter	denoised	merged	percentage of input merged	non-chimeric	percentage of input non-chimeric
+#q2:types	numeric	numeric	numeric	numeric	numeric	numeric	numeric	numeric
+RW1	207651	153139	73.75	152812	151576	73	150466	72.46
+RW2	226361	162982	72	162686	161101	71.17	157813	69.72
+RW3	221776	159021	71.7	158648	157142	70.86	154094	69.48
+Rye	260761	189028	72.49	188705	187591	71.94	184494	70.75
+Wheat	225280	168417	74.76	168214	167326	74.27	165682	73.54
