@@ -1,4 +1,4 @@
-# York College Sourdough Microbiome Workshop
+# Grain Microbiome Workshop
 
 # Introduction
 ‘Sourdough’ breads, made using flours milled from grains including wheat and rye, are leavened with a natural starter. The starter microbiome originates from microorganisms found in grain and flour. Its composition changes markedly on incubation with regular feedings. Leavening results from yeast fermentation of the low concentration of simple sugars found in flour, and souring is due to acidifying bacteria such as lactobacilli. 
@@ -6,6 +6,7 @@
  
 <img width="3164" alt="image" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Workshop/assets/97687143/e549a724-0020-4d78-ba48-23940c33d588">
 
+# Primers for 16S rRNA gene sequencing
 Primers used: (V3/V4)
 
 341f: CCTACGGGNGGCWGCAG
@@ -13,8 +14,8 @@ Primers used: (V3/V4)
 806r: GACTACNVGGGTMTCTAATCC
 
 # commands
-- Test
-	* test2
+The mcirobiome analysis was performed using [QIIME 2 command-line interface](https://docs.qiime2.org/2023.9/interfaces/q2cli/).
+
 ```
 conda activate qiime2-amplicon-2023.9
 ```
