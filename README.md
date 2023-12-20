@@ -20,7 +20,7 @@ The mcirobiome analysis was performed using [QIIME 2 command-line interface](htt
 ```
 conda activate qiime2-amplicon-2023.9
 ```
-2) Import using input format Laneless
+2) Import using input format Laneless.
 ```
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
@@ -28,7 +28,7 @@ qiime tools import \
   --input-format CasavaOneEightLanelessPerSampleDirFmt \
   --output-path demux-paried-end.qza
 ```
-3) Trim adapters
+3) Trim adapters.
 ```
 qiime cutadapt trim-paired \
   --i-demultiplexed-sequences demux-paried-end.qza \
@@ -37,7 +37,7 @@ qiime cutadapt trim-paired \
   --o-trimmed-sequences trimmed-demux-paried-end.qza \
   --p-discard-untrimmed --p-match-read-wildcards    
 ```
-4) copy demultiplexed file
+4) copy demultiplexed file.
 ```
 cp trimmed-demux-paried-end.qza demux.qza 
 ```
@@ -51,7 +51,7 @@ qiime demux summarize \
 ```
 qiime tools view demux.qzv
 ```
-6) Sequence quality control and feature table construction using DADA2
+6) Sequence quality control and feature table construction using DADA2.
 ```
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux.qza \
