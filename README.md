@@ -63,30 +63,31 @@ qiime dada2 denoise-paired \
   --o-table table-dada2.qza \
   --o-denoising-stats stats-dada2.qza
 ```
+8) Visualize dada2 stats.
 ```
 qiime metadata tabulate \
   --m-input-file stats-dada2.qza \
   --o-visualization stats-dada2.qzv
 ```
-
+9) Rename files for easy to use commands.
 ```
 mv rep-seqs-dada2.qza rep-seqs.qza
 mv table-dada2.qza table.qza
 ```
-
+10) Summarize feature table.
 ```
 qiime feature-table summarize \
   --i-table table.qza \
   --o-visualization table.qzv \
   --m-sample-metadata-file sample-metadata.tsv
 ```
-
+11) Visualize representative sequences.
 ```
 qiime feature-table tabulate-seqs \
   --i-data rep-seqs.qza \
   --o-visualization rep-seqs.qzv
 ```
-
+12) Make tree files for phylogenetic analysis.
 ```
 qiime phylogeny align-to-tree-mafft-fasttree \
   --i-sequences rep-seqs.qza \
@@ -96,7 +97,7 @@ qiime phylogeny align-to-tree-mafft-fasttree \
   --o-rooted-tree rooted-tree.qza
 ```
 
-Extract reference reads
+13) Extract reference reads for taxonomic classification.
 ```
 qiime feature-classifier extract-reads \
   --i-sequences silva-138-99-seqs.qza \
@@ -106,27 +107,27 @@ qiime feature-classifier extract-reads \
   --p-max-length 600 \
   --o-reads ref-seqs-341f-806r.qza
 ```
-Build classifier
+14) Build taxonomic classifier.
 ```
 qiime feature-classifier fit-classifier-naive-bayes \
   --i-reference-reads ref-seqs-341f-806r.qza \ 
   --i-reference-taxonomy silva-138-99-tax.qza \ 
   --o-classifier classifier-silva-341f-806r.qza
 ```
-Taxonomic analysis
+15) Taxonomic assignments to representative sequences.
 ```
 qiime feature-classifier classify-sklearn \
   --i-classifier classifier-silva-341f-806r.qza \      
   --i-reads rep-seqs.qza \
   --o-classification taxonomy.qza
 ```
-Visualize taxonomy
+16) Visualize taxonomy.
 ```
 qiime metadata tabulate \
   --m-input-file taxonomy.qza \
   --o-visualization taxonomy.qzv
 ```
-Make bar plots
+17) Make bar plots.
 ```
 qiime taxa barplot \
   --i-table table.qza \
@@ -134,7 +135,7 @@ qiime taxa barplot \
   --m-metadata-file sample-metadata.tsv \
   --o-visualization taxa-bar-plots.qzv
 ```
-
+18) Collapse taxonomy at genus level.
 ```
 qiime taxa collapse \
   --i-table table.qza \ 
@@ -142,20 +143,20 @@ qiime taxa collapse \
   --p-level 6 \
   --o-collapsed-table table-level-6.qza
 ```
-
+19) Export qza file.
 ```
 qiime tools export --input-path table-level-6.qza --output-path exported-Table-level-6
 
 cd exported-Table-level-6 
 ```
-
+20) Conver biom file to text file.
 ```
 biom convert -i feature-table.biom -o feature-table.txt --to-tsv
 ```
 
-Delete top two cantaminating plastid DNA. And save as another name.
+21) Delete top two cantaminating plastid DNA. And save as another name.
 
-Convert .txt file back to biom file.
+22) Convert .txt file back to biom file.
 ```
 biom convert -i feature-table-filtered.txt -o feature-table-filtered.biom --to-hdf5 --table-type="OTU table"
 
