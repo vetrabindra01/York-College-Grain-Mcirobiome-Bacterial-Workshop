@@ -1,4 +1,4 @@
-# York-College-Microbiome
+# York College Sourdough Microbiome Workshop
 
 Primers used: (V3/V4)
 
