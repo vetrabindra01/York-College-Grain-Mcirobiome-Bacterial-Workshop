@@ -63,5 +63,6 @@ qiime dada2 denoise-paired \
   --o-table table-dada2.qza \
   --o-denoising-stats stats-dada2.qza
 ```
+<img width="438" alt="Screenshot 2023-12-20 at 4 47 20 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Workshop/assets/97687143/b86e82e8-5dcc-49d2-83d0-6039225bff4d">
 
 
