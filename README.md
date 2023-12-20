@@ -51,7 +51,7 @@ qiime demux summarize \
 ```
 qiime tools view demux.qzv
 ```
-6) Sequence quality control and feature table construction using DADA2.
+7) Sequence quality control and feature table construction using DADA2.
 ```
 qiime dada2 denoise-paired \
   --i-demultiplexed-seqs demux.qza \
@@ -63,6 +63,108 @@ qiime dada2 denoise-paired \
   --o-table table-dada2.qza \
   --o-denoising-stats stats-dada2.qza
 ```
+```
+qiime metadata tabulate \
+  --m-input-file stats-dada2.qza \
+  --o-visualization stats-dada2.qzv
+```
+
+```
+mv rep-seqs-dada2.qza rep-seqs.qza
+mv table-dada2.qza table.qza
+```
+
+```
+qiime feature-table summarize \
+  --i-table table.qza \
+  --o-visualization table.qzv \
+  --m-sample-metadata-file sample-metadata.tsv
+```
+
+```
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs.qza \
+  --o-visualization rep-seqs.qzv
+```
+
+```
+qiime phylogeny align-to-tree-mafft-fasttree \
+  --i-sequences rep-seqs.qza \
+  --o-alignment aligned-rep-seqs.qza \
+  --o-masked-alignment masked-aligned-rep-seqs.qza \
+  --o-tree unrooted-tree.qza \
+  --o-rooted-tree rooted-tree.qza
+```
+
+Extract reference reads
+```
+qiime feature-classifier extract-reads \
+  --i-sequences silva-138-99-seqs.qza \
+  --p-f-primer CCTACGGGNGGCWGCAG \
+  --p-r-primer GACTACNVGGGTMTCTAATCC \
+  --p-min-length 100 \
+  --p-max-length 600 \
+  --o-reads ref-seqs-341f-806r.qza
+```
+Build classifier
+```
+qiime feature-classifier fit-classifier-naive-bayes \
+  --i-reference-reads ref-seqs-341f-806r.qza \ 
+  --i-reference-taxonomy silva-138-99-tax.qza \ 
+  --o-classifier classifier-silva-341f-806r.qza
+```
+Taxonomic analysis
+```
+qiime feature-classifier classify-sklearn \
+  --i-classifier classifier-silva-341f-806r.qza \      
+  --i-reads rep-seqs.qza \
+  --o-classification taxonomy.qza
+```
+Visualize taxonomy
+```
+qiime metadata tabulate \
+  --m-input-file taxonomy.qza \
+  --o-visualization taxonomy.qzv
+```
+Make bar plots
+```
+qiime taxa barplot \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization taxa-bar-plots.qzv
+```
+
+```
+qiime taxa collapse \
+  --i-table table.qza \ 
+  --i-taxonomy taxonomy.qza \
+  --p-level 6 \
+  --o-collapsed-table table-level-6.qza
+```
+
+```
+qiime tools export --input-path table-level-6.qza --output-path exported-Table-level-6
+
+cd exported-Table-level-6 
+```
+
+```
+biom convert -i feature-table.biom -o feature-table.txt --to-tsv
+```
+
+Delete top two cantaminating plastid DNA. And save as another name.
+
+Convert .txt file back to biom file.
+```
+biom convert -i feature-table-filtered.txt -o feature-table-filtered.biom --to-hdf5 --table-type="OTU table"
+
+biom normalize-table -r -i feature-table-filtered.biom -o rel-abun-feature-table-filtered.biom
+
+biom convert -i rel-abun-feature-table-filtered.biom -o rel-abun-feature-table-filtered.txt --to-tsv
+```
+
+
 <img width="438" alt="Screenshot 2023-12-20 at 4 47 20 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Workshop/assets/97687143/b86e82e8-5dcc-49d2-83d0-6039225bff4d">
 
 
