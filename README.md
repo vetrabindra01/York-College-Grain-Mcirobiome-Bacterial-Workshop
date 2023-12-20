@@ -16,10 +16,52 @@ Primers used: (V3/V4)
 # commands
 The mcirobiome analysis was performed using [QIIME 2 command-line interface](https://docs.qiime2.org/2023.9/interfaces/q2cli/).
 
-Activate qiime2 using conda.
+1) Activate qiime2 using conda.
 ```
 conda activate qiime2-amplicon-2023.9
 ```
-
+2) Import using input format Laneless
+```
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path Laneless \ 
+  --input-format CasavaOneEightLanelessPerSampleDirFmt \
+  --output-path demux-paried-end.qza
+```
+3) Trim adapters
+```
+qiime cutadapt trim-paired \
+  --i-demultiplexed-sequences demux-paried-end.qza \
+  --p-front-f CCTACGGGNGGCWGCAG \
+  --p-front-r GACTACNVGGGTMTCTAATCC \
+  --o-trimmed-sequences trimmed-demux-paried-end.qza \
+  --p-discard-untrimmed --p-match-read-wildcards    
+```
+4) copy demultiplexed file
+```
+cp trimmed-demux-paried-end.qza demux.qza 
+```
+5) Generate a summary of demultiplexing results.
+```
+qiime demux summarize \
+  --i-data demux.qza \
+  --o-visualization demux.qzv
+```
+6) View demux file
+```
+qiime tools view demux.qzv
+```
+6) Sequence quality control and feature table construction using DADA2
+```
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs demux.qza \
+  --p-trim-left-f 0 \
+  --p-trim-left-r 0 \
+  --p-trunc-len-f 280 \
+  --p-trunc-len-r 180 \
+  --o-representative-sequences rep-seqs-dada2.qza \
+  --o-table table-dada2.qza \
+  --o-denoising-stats stats-dada2.qza
+```
 
 
