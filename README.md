@@ -120,10 +120,12 @@ qiime feature-classifier fit-classifier-naive-bayes \
 15) Taxonomic assignments to representative sequences.
 ```
 qiime feature-classifier classify-sklearn \
-  --i-classifier classifier-silva-341f-806r.qza \      
+  --i-classifier classifier-silva-341f-806r.qza \
   --i-reads rep-seqs.qza \
   --o-classification taxonomy.qza
 ```
+
+
 16) Visualize taxonomy.
 ```
 qiime metadata tabulate \
