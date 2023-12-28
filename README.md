@@ -113,10 +113,12 @@ qiime feature-classifier extract-reads \
 14) Build taxonomic classifier.
 ```
 qiime feature-classifier fit-classifier-naive-bayes \
-  --i-reference-reads ref-seqs-341f-806r.qza \ 
-  --i-reference-taxonomy silva-138-99-tax.qza \ 
-  --o-classifier classifier-silva-341f-806r.qza
+--i-reference-reads ref-seqs-341f-806r.qza \
+--i-reference-taxonomy silva-138-99-tax.qza \
+--o-classifier classifier-silva-341f-806r.qza
 ```
+[Link to downlaod the classifier](https://drive.google.com/drive/folders/1cCTJXA0PdTqb_v-jovVa4hUtYfWxFvoc?usp=drive_link).
+
 15) Taxonomic assignments to representative sequences.
 ```
 qiime feature-classifier classify-sklearn \
