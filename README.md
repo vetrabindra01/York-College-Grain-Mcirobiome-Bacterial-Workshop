@@ -24,10 +24,13 @@ conda activate qiime2-amplicon-2023.9
 ```
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path Laneless \ 
+  --input-path casava-18-paired-end-demultiplexed \
   --input-format CasavaOneEightLanelessPerSampleDirFmt \
-  --output-path demux-paried-end.qza
+  --output-path demux-paired-end.qza
 ```
+
+
+  
 3) Trim adapters.
 ```
 qiime cutadapt trim-paired \
