@@ -24,7 +24,7 @@ conda activate qiime2-amplicon-2023.9
 ```
 qiime tools import \
   --type 'SampleData[PairedEndSequencesWithQuality]' \
-  --input-path casava-18-paired-end-demultiplexed \
+  --input-path laneless \
   --input-format CasavaOneEightLanelessPerSampleDirFmt \
   --output-path demux-paired-end.qza
 ```
