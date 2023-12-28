@@ -1,6 +1,0 @@
-```cd fungal```
-
-1) Activate qiime2 using conda.
-```
-conda activate qiime2-amplicon-2023.9
-```
