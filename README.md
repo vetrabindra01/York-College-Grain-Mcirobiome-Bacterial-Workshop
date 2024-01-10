@@ -175,7 +175,7 @@ biom convert -i rel-abun-feature-table-filtered.biom -o rel-abun-feature-table-f
 
 <img width="438" alt="Screenshot 2023-12-20 at 4 47 20 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Workshop/assets/97687143/b86e82e8-5dcc-49d2-83d0-6039225bff4d">
 
-
+23) Import filtered biom table inside qiime2.
 ```
 qiime tools import \
 --input-path feature-table-filtered.biom \
@@ -184,6 +184,7 @@ qiime tools import \
 --output-path filtered-table.qza
 ```
 
+24) Summarize table
 ```
 qiime feature-table summarize \
   --i-table filtered-table.qza \
@@ -191,6 +192,7 @@ qiime feature-table summarize \
   --m-sample-metadata-file sample-metadata.tsv
 ```
 
+25) Core metric analysis
 ```
 qiime diversity core-metrics \
   --i-table filtered-table.qza \
@@ -201,7 +203,10 @@ qiime diversity core-metrics \
 
 Before filtering
 
+<img width="75" alt="Screenshot 2024-01-10 at 4 31 54 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Bacterial-Workshop/assets/97687143/13d1526a-6468-4305-a263-beab9632c348">
+
 <img width="686" alt="Screenshot 2024-01-10 at 4 29 31 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Bacterial-Workshop/assets/97687143/348035a1-5dad-406e-86ac-dd8840759f94">
+
 
 After filtering
 
