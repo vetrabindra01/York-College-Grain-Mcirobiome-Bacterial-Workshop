@@ -176,3 +176,34 @@ biom convert -i rel-abun-feature-table-filtered.biom -o rel-abun-feature-table-f
 <img width="438" alt="Screenshot 2023-12-20 at 4 47 20 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Workshop/assets/97687143/b86e82e8-5dcc-49d2-83d0-6039225bff4d">
 
 
+```
+qiime tools import \
+--input-path feature-table-filtered.biom \
+--type 'FeatureTable[Frequency]' \
+--input-format BIOMV210Format \
+--output-path filtered-table.qza
+```
+
+```
+qiime feature-table summarize \
+  --i-table filtered-table.qza \
+  --o-visualization filtered-table.qzv \
+  --m-sample-metadata-file sample-metadata.tsv
+```
+
+```
+qiime diversity core-metrics \
+  --i-table filtered-table.qza \
+  --p-sampling-depth 3400 \
+  --m-metadata-file sample-metadata.tsv \
+  --output-dir diversity-core-metrics-non-phylogenetic
+```
+
+Before filtering
+
+<img width="686" alt="Screenshot 2024-01-10 at 4 29 31 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Bacterial-Workshop/assets/97687143/348035a1-5dad-406e-86ac-dd8840759f94">
+
+After filtering
+
+<img width="849" alt="Screenshot 2024-01-10 at 4 30 02 PM" src="https://github.com/vetrabindra01/York-College-Grain-Mcirobiome-Bacterial-Workshop/assets/97687143/b9adfe39-e0dc-4496-be23-bef5f153d220">
+
