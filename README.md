@@ -153,7 +153,7 @@ qiime taxa collapse \
 ```
 19) Export qza file.
 ```
-qiime tools export --input-path table-level-6.qza --output-path exported-Table-level-6
+qiime tools export --input-path table-l6.qza --output-path exported-Table-level-6
 
 cd exported-Table-level-6 
 ```
