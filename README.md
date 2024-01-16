@@ -145,10 +145,11 @@ qiime taxa barplot \
 18) Collapse taxonomy at genus level.
 ```
 qiime taxa collapse \
-  --i-table table.qza \ 
+  --i-table table.qza \
   --i-taxonomy taxonomy.qza \
   --p-level 6 \
-  --o-collapsed-table table-level-6.qza
+  --o-collapsed-table table-l6.qza
+
 ```
 19) Export qza file.
 ```
