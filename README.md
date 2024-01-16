@@ -151,6 +151,14 @@ qiime taxa collapse \
   --o-collapsed-table table-l6.qza
 
 ```
+```
+qiime taxa collapse \
+  --i-table table.qza \
+  --i-taxonomy taxonomy.qza \
+  --p-level 7 \
+  --o-collapsed-table table-l7.qza
+
+```
 19) Export qza file.
 ```
 qiime tools export --input-path table-l6.qza --output-path exported-Table-level-6
